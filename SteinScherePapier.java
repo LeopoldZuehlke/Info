@@ -41,9 +41,9 @@ public class SteinScherePapier {
 
         System.out.println("Hey, spiel mit mir Stein-Schere-Papier!");
 
-        var playersChoice = getHumansChoice();
-        var computerChoice = getComputersChoice();
-        var winner = determineWinner(playersChoice, computerChoice);
+        var humansChoice = getHumansChoice();
+        var computersChoice = getComputersChoice();
+        var winner = determineWinner(humansChoice, computersChoice);
 
         if (winner.isEmpty()) {
             System.out.println("Unentschieden!");
@@ -78,25 +78,25 @@ public class SteinScherePapier {
         }
     }
 
-    private static Optional<Player> determineWinner(Choice playersChoice, Choice computerChoice) {
-        if (playersChoice == computerChoice) {
+    private static Optional<Player> determineWinner(Choice humansChoice, Choice computersChoice) {
+        if (humansChoice == computersChoice) {
             return Optional.empty();
         }
-        switch (playersChoice) {
+        switch (humansChoice) {
             case STEIN:
-                if (computerChoice == Choice.SCHERE) {
+                if (computersChoice == Choice.SCHERE) {
                     return Optional.of(Player.HUMAN);
                 } else {
                     return Optional.of(Player.COMPUTER);
                 }
             case SCHERE:
-                if (computerChoice == Choice.PAPIER) {
+                if (computersChoice == Choice.PAPIER) {
                     return Optional.of(Player.HUMAN);
                 } else {
                     return Optional.of(Player.COMPUTER);
                 }
             case PAPIER:
-                if (computerChoice == Choice.STEIN) {
+                if (computersChoice == Choice.STEIN) {
                     return Optional.of(Player.HUMAN);
                 } else {
                     return Optional.of(Player.COMPUTER);
